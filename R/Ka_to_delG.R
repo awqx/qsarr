@@ -1,3 +1,5 @@
+#' Ka to dG conversion
+#'
 #' Convert a value from Ka (constant of association) to Gibbs free energy (kJ/mol)
 #'
 #' @param ka The Ka value

@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ka_to_delG.R
 \name{Ka_to_delG}
 \alias{Ka_to_delG}
-\title{Convert a value from Ka (constant of association) to Gibbs free energy (kJ/mol)}
+\title{Ka to dG conversion}
 \usage{
 Ka_to_delG(ka)
 }
