@@ -10,9 +10,11 @@ make_regex <- function(s) {
     "\\",
     c(".", "-", "(", ")", "?", "*", "+"))
   chr_replace <- paste0("\\", chr_pattern)
-  mapply(
-    str_replace,
-    pattern = chr_pattern,
-    replacement = chr_replace,
-    MoreArgs = list(string = s))
+  for (i in 1:length(chr_pattern)) {
+    s <- str_replace(
+      pattern = chr_pattern[i],
+      replacement = chr_replace[i]
+    )
+  }
+  s
 }
