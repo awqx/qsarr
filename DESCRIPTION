@@ -11,6 +11,9 @@ LazyData: true
 Imports: 
     dplyr,
     ggplot2,
+    httr,
     caret,
-    e1071
+    stringr,
+    e1071, 
+    XML
 RoxygenNote: 7.1.1
