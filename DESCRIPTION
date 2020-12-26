@@ -16,4 +16,5 @@ Imports:
     stringr,
     e1071, 
     XML
+Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1

@@ -7,17 +7,20 @@
 dwnld_mol_list(mol_list, path, file_format = "SDF")
 }
 \arguments{
-\item{mol_list}{Character vector of molecule names}
+\item{mol_list}{Character vector or list of molecule names}
 
-\item{path}{Name of directory to save file}
+\item{path}{Name of directory to save the files}
 
-\item{file_format}{Type of file to download. Default is "SDF".}
+\item{file_format}{Type of file to download, default of "SDF". The full list
+of possible formats can be found in the Chemical Identifier Resolver.}
 }
 \value{
-Data frame corresponding to whether a file downloaded, received a warning, or received an error.
+Data frame corresponding to whether a file downloaded, received a
+warning, or received an error.
 }
 \description{
-Queries the NCI Chemical Identifier Resolver for structure
-files corresponding to the names given in a vector.
-File saved in the directory provided as the path.
+\code{dwnld_mol_list} is a wrapper for \code{lapply} and \code{\link[=dwnld_mol]{dwnld_mol()}}. It queries
+the NCI Chemical Identifier Resolver for structure #' files corresponding
+to the names given in a vector. Files are saved in the directory provided
+as the path. The output is a single data frame of the results.
 }

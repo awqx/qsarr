@@ -1,14 +1,19 @@
 #' Download molecule structure
 #'
-#' Queries the NCI Chemical Identifier Resolver for a structure file corresponding to the name given.
-#' File saved in the directory provided as the path.
+#' `dwnld_mol` queries the NCI Chemical Identifier Resolver for a structure
+#' file corresponding to the name given. The file is saved in the directory
+#' provided as the path. The Chemical Identifier Resolver can be found at
+#' <https://cactus.nci.nih.gov/chemical/structure>.
 #'
 #' @param mol Name of molecule
 #' @param path Name of directory to save file
-#' @param file_format Type of file to download. E.g., "SDF"
-#' @return Data frame corresponding to whether a file downloaded, received a warning, or received an error.
+#' @param file_format Type of file to download, default of "SDF". The full list
+#' of possible formats can be found in the Chemical Identifier Resolver.
+#' @return The function returns a data frame row corresponding to whether a
+#' file downloaded, received a warning, or received an error.
+#' @importFrom httr GET
 
-dwnld_mol <- function(mol, path, file_format) {
+dwnld_mol <- function(mol, path, file_format = "SDF") {
   destfile   <- paste0(path, "/", mol, ".", file_format)
   mol_url  <- unlist(lapply(mol, URLencode, reserved = T))
   cactus_url <- paste0(
@@ -16,7 +21,7 @@ dwnld_mol <- function(mol, path, file_format) {
     mol_url, "/", file_format
   )
   report <- tryCatch({
-    GET(cactus_url, write_disk(destfile, overwrite = T))
+    httr::GET(cactus_url, write_disk(destfile, overwrite = T))
     data.frame(
       mol = mol,
       downloaded = 1,
@@ -25,7 +30,7 @@ dwnld_mol <- function(mol, path, file_format) {
   },
   warning = function(warn) {
     message("Warning: URL error or attempt to overwrite existing directory.")
-    GET(cactus_url, write_disk(destfile, overwrite = T))
+    httr::GET(cactus_url, write_disk(destfile, overwrite = T))
     data.frame(
       mol = mol,
       downloaded = 1,

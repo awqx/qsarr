@@ -13,5 +13,6 @@ Ka_to_delG(ka)
 Gibbs free energy, in kJ/mol
 }
 \description{
-Convert a value from Ka (constant of association) to Gibbs free energy (kJ/mol)
+\code{Ka_to_delG} converts a value from Ka (constant of association) to
+Gibbs free energy (kJ/mol).
 }

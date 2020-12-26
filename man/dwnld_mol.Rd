@@ -4,19 +4,23 @@
 \alias{dwnld_mol}
 \title{Download molecule structure}
 \usage{
-dwnld_mol(mol, path, file_format)
+dwnld_mol(mol, path, file_format = "SDF")
 }
 \arguments{
 \item{mol}{Name of molecule}
 
 \item{path}{Name of directory to save file}
 
-\item{file_format}{Type of file to download. E.g., "SDF"}
+\item{file_format}{Type of file to download, default of "SDF". The full list
+of possible formats can be found in the Chemical Identifier Resolver.}
 }
 \value{
-Data frame corresponding to whether a file downloaded, received a warning, or received an error.
+The function returns a data frame row corresponding to whether a
+file downloaded, received a warning, or received an error.
 }
 \description{
-Queries the NCI Chemical Identifier Resolver for a structure file corresponding to the name given.
-File saved in the directory provided as the path.
+\code{dwnld_mol} queries the NCI Chemical Identifier Resolver for a structure
+file corresponding to the name given. The file is saved in the directory
+provided as the path. The Chemical Identifier Resolver can be found at
+\url{https://cactus.nci.nih.gov/chemical/structure}.
 }

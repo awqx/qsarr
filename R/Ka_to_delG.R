@@ -1,6 +1,7 @@
 #' Ka to dG conversion
 #'
-#' Convert a value from Ka (constant of association) to Gibbs free energy (kJ/mol)
+#' `Ka_to_delG` converts a value from Ka (constant of association) to
+#' Gibbs free energy (kJ/mol).
 #'
 #' @param ka The Ka value
 #' @return Gibbs free energy, in kJ/mol

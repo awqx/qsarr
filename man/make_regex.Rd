@@ -13,5 +13,13 @@ make_regex(s)
 A string with special characters escaped
 }
 \description{
-Escapes special characters in a string for compatability with regex
+\code{make_regex} escapes special regex characters in a string. The function
+addresses the grouping characters (parentheses, brackets, and hyphens),
+matching for the beginning and end of a string (\code{"^"} and \code{"$"}), regex
+for number of repetitions, as well as the dot \code{"."} for any character.
+}
+\details{
+The function assumes that the string passed to the function needs to
+found as-is. That is, the string is not indicative of any regex pattern
+matching.
 }

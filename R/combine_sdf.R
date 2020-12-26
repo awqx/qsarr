@@ -1,16 +1,18 @@
 #' Combine SDF files
 #'
-#' Combines a directory of SDFs into a single SDF where the molecule name is the filename
+#' `combine_sdf` combines a directory of SDFs into a single SDF. For each
+#' molecule in the single SDF, the molecule name is the filename.
 #'
 #' @param mol_dir The directory containing the SDFs to combine.
 #' @return An SDF as a data frame with one column.
+#' @import dplyr
+#' @importFrom stringr str_detect str_remove
 
-# combines a directory of SDFs into one SDF w/ mol name = filename
 combine_sdf <- function(mol_dir) {
   mol_files <- list.files(mol_dir, full.names = T) %>%
-    .[str_detect(., "(?i)sdf")]
+    .[stringr::str_detect(., "(?i)sdf")]
   mol_names <- list.files(mol_dir) %>%
-    str_remove("(?i)\\.sdf")
+    stringr::str_remove("(?i)\\.sdf")
 
   # Removing empty files
   mol_info  <- lapply(mol_files, file.info) %>%
@@ -24,7 +26,9 @@ combine_sdf <- function(mol_dir) {
     mol_files,
     read.csv,
     header = F,
-    stringsAsFactors = F)
+    stringsAsFactors = F
+    )
+
   # Assigning the correct names
   for(i in 1:length(sdf_list)) sdf_list[[i]][1, ] <- mol_names[i]
 

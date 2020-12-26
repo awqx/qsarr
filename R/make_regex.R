@@ -1,17 +1,25 @@
 #' Convert to regex
 #'
-#' Escapes special characters in a string for compatability with regex
+#' `make_regex` escapes special regex characters in a string. The function
+#' addresses the grouping characters (parentheses, brackets, and hyphens),
+#' matching for the beginning and end of a string (`"^"` and `"$"`), regex
+#' for number of repetitions, as well as the dot `"."` for any character.
+#'
+#' The function assumes that the string passed to the function needs to
+#' found as-is. That is, the string is not indicative of any regex pattern
+#' matching.
 #'
 #' @param s The string to convert to regex
 #' @return A string with special characters escaped
+#' @importFrom stringr str_replace_all
 
 make_regex <- function(s) {
   chr_pattern <- paste0(
     "\\",
-    c(".", "-", "(", ")", "?", "*", "+", "[", "]"))
+    c(".", "-", "(", ")", "?", "*", "+", "[", "]", "^", "$", "{", "}"))
   chr_replace <- paste0("\\", chr_pattern)
   for (i in 1:length(chr_pattern)) {
-    s <- str_replace_all(
+    s <- stringr::str_replace_all(
       s,
       pattern = chr_pattern[i],
       replacement = chr_replace[i]
