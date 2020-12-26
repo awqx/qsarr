@@ -13,7 +13,7 @@ dwnld_sdf <- function(mol, path, file_format) {
   mol_url  <- unlist(lapply(mol, URLencode, reserved = T))
   cactus_url <- paste0(
     "https://cactus.nci.nih.gov/chemical/structure/",
-    mol_url, "/", chemical_format
+    mol_url, "/", file_format
   )
   report <- tryCatch({
     GET(cactus_url, write_disk(destfile, overwrite = T))
