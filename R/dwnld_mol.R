@@ -11,7 +11,7 @@
 #'   of possible formats can be found in the Chemical Identifier Resolver.
 #' @return The function returns a data frame row corresponding to whether a
 #'   file downloaded, received a warning, or received an error.
-#' @importFrom httr GET
+#' @importFrom httr GET write_disk
 #' @export
 
 dwnld_mol <- function(mol, path, file_format = "SDF") {
@@ -22,7 +22,7 @@ dwnld_mol <- function(mol, path, file_format = "SDF") {
     mol_url, "/", file_format
   )
   report <- tryCatch({
-    httr::GET(cactus_url, write_disk(destfile, overwrite = T))
+    httr::GET(cactus_url, httr::write_disk(destfile, overwrite = T))
     data.frame(
       mol = mol,
       downloaded = 1,
@@ -31,7 +31,7 @@ dwnld_mol <- function(mol, path, file_format = "SDF") {
   },
   warning = function(warn) {
     message("Warning: URL error or attempt to overwrite existing directory.")
-    httr::GET(cactus_url, write_disk(destfile, overwrite = T))
+    httr::GET(cactus_url, httr::write_disk(destfile, overwrite = T))
     data.frame(
       mol = mol,
       downloaded = 1,
