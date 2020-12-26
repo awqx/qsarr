@@ -8,13 +8,14 @@
 make_regex <- function(s) {
   chr_pattern <- paste0(
     "\\",
-    c(".", "-", "(", ")", "?", "*", "+"))
+    c(".", "-", "(", ")", "?", "*", "+", "[", "]"))
   chr_replace <- paste0("\\", chr_pattern)
   for (i in 1:length(chr_pattern)) {
-    s <- str_replace(
+    s <- str_replace_all(
+      s,
       pattern = chr_pattern[i],
       replacement = chr_replace[i]
     )
   }
-  s
+  return(s)
 }
