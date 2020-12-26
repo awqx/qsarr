@@ -1,7 +1,7 @@
 #' Combine SDF files
 #'
-#' `combine_sdf` combines a directory of SDFs into a single SDF. For each
-#' molecule in the single SDF, the molecule name is the filename.
+#' \code{combine_sdf} combines a directory of SDFs into a single SDF.
+#' For each molecule in the single SDF, the molecule name is the filename.
 #'
 #' @param mol_dir The directory containing the SDFs to combine.
 #' @return An SDF as a data frame with one column.
