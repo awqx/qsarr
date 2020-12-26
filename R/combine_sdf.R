@@ -1,12 +1,13 @@
 #' Combine SDF files
 #'
-#' \code{combine_sdf} combines a directory of SDFs into a single SDF.
+#' `combine_sdf` combines a directory of SDFs into a single SDF.
 #' For each molecule in the single SDF, the molecule name is the filename.
 #'
 #' @param mol_dir The directory containing the SDFs to combine.
 #' @return An SDF as a data frame with one column.
 #' @import dplyr
 #' @importFrom stringr str_detect str_remove
+#' @export
 
 combine_sdf <- function(mol_dir) {
   mol_files <- list.files(mol_dir, full.names = T) %>%

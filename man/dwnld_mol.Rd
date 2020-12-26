@@ -16,7 +16,7 @@ of possible formats can be found in the Chemical Identifier Resolver.}
 }
 \value{
 The function returns a data frame row corresponding to whether a
-  file downloaded, received a warning, or received an error.
+file downloaded, received a warning, or received an error.
 }
 \description{
 \code{dwnld_mol} queries the NCI Chemical Identifier Resolver for a structure

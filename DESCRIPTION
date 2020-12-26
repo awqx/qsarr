@@ -17,3 +17,4 @@ Imports:
     e1071, 
     XML
 RoxygenNote: 7.1.1
+Roxygen: list(markdown = TRUE)

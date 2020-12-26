@@ -16,12 +16,12 @@ of possible formats can be found in the Chemical Identifier Resolver.}
 }
 \value{
 Data frame corresponding to whether a file downloaded, received a
-  warning, or received an error.
+warning, or received an error.
 }
 \description{
-\code{dwnld_mol_list} is a wrapper for \code{lapply} and
-\code{\link{dwnld_mol}}. It queries the NCI Chemical Identifier Resolver
-for structure #' files corresponding to the names given in a vector.
-Files are saved in the directory provided as the path. The output is a
-single data frame of the results.
+\code{dwnld_mol_list} is a wrapper for \code{lapply} and \verb{[dwnld_mol()]}. It queries
+the NCI Chemical Identifier Resolver for structure files corresponding to
+the names given in a vector.
+Files are saved in the directory provided as the path.
+The output is a single data frame of the results.
 }
