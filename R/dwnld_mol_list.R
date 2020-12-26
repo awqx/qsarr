@@ -9,12 +9,12 @@
 #' @param file_format Type of file to download. Default is "SDF".
 #' @return Data frame corresponding to whether a file downloaded, received a warning, or received an error.
 
-dwnld_sdf_list <- function(mol_list, path, file_format = "SDF") {
+dwnld_mol_list <- function(mol_list, path, file_format = "SDF") {
   do.call(
     rbind,
     lapply(
       mol_list,
-      dwnld_sdf,
+      dwnld_mol,
       path = path,
       file_format = file_format
     )

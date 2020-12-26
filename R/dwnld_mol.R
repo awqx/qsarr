@@ -8,7 +8,7 @@
 #' @param file_format Type of file to download. E.g., "SDF"
 #' @return Data frame corresponding to whether a file downloaded, received a warning, or received an error.
 
-dwnld_sdf <- function(mol, path, file_format) {
+dwnld_mol <- function(mol, path, file_format) {
   destfile   <- paste0(path, "/", mol, ".", file_format)
   mol_url  <- unlist(lapply(mol, URLencode, reserved = T))
   cactus_url <- paste0(
