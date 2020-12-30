@@ -10,6 +10,7 @@
 #'   from `combine_sdf`
 #' @param path The file path for the SDF. If it does not end with
 #'   ".SDF", the appropriate file suffix will be applied.
+#' @return A data frame in the format of an SDF.
 #' @export
 
 write_sdf <- function(sdf, path) {

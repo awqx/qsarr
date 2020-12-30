@@ -15,6 +15,9 @@ The default is \code{FALSE}.}
 \item{shorten}{Whether to message the shortened file name.
 The default is \code{TRUE}.}
 }
+\value{
+A list of the files read from the paths
+}
 \description{
 \code{read_desc_list} is a wrapper for \verb{[read_desc()]} and \code{lapply}.
 The function calls \verb{[read_desc_helper()]} for additional error

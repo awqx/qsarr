@@ -13,6 +13,9 @@ from \code{combine_sdf}}
 \item{path}{The file path for the SDF. If it does not end with
 ".SDF", the appropriate file suffix will be applied.}
 }
+\value{
+A data frame in the format of an SDF.
+}
 \description{
 \code{write_sdf} can write the output of \code{combine_sdf} into an SDF file.
 The function is a wrapper for \code{write.table} with settings adjusted

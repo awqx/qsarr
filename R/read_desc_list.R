@@ -9,6 +9,7 @@
 #'   The default is `FALSE`.
 #' @param shorten Whether to message the shortened file name.
 #'   The default is `TRUE`.
+#' @return A list of the files read from the paths
 #' @export
 
 read_desc_list <- function(path_list, quiet = F, shorten = T) {
