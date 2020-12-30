@@ -4,13 +4,16 @@
 \alias{combine_sdf}
 \title{Combine SDF files}
 \usage{
-combine_sdf(mol_dir, quiet = F)
+combine_sdf(mol_dir, quiet = F, rm_name = F)
 }
 \arguments{
 \item{mol_dir}{The directory containing the SDFs to combine.}
 
 \item{quiet}{Whether or not the function will message when a directory
 is processed. The default is \code{quiet = FALSE}.}
+
+\item{rm_name}{Whether or not to remove the filename. The default is
+\code{rm_name = FALSE}.}
 }
 \value{
 An SDF as a data frame with one column.
@@ -18,6 +21,7 @@ An SDF as a data frame with one column.
 \description{
 \code{combine_sdf} combines a directory of SDFs into a single SDF.
 For each molecule in the single SDF, the molecule name is the filename.
+Optionally, molecule names can be removed with \code{rm_name = T}.
 If the directory is empty, the function returns a 0.
 The function will message if a directory is processed. This
 can be suppressed with \code{quiet = T}.
