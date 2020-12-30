@@ -23,7 +23,7 @@ read_desc <- function(path) {
     file_type,
     "rds" = readRDS(path),
     "csv" = read.csv(path),
-    "xls",
+    "xls" =,
     "xlsx" = {
       sheets <- excel_sheets(path)
       do.call(
