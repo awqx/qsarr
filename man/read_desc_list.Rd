@@ -4,7 +4,7 @@
 \alias{read_desc_list}
 \title{Read a list of chemical descriptor files}
 \usage{
-read_desc_list(path_list, quiet = F, shorten = T)
+read_desc_list(path_list, quiet = F, shorten = T, use_filename = T)
 }
 \arguments{
 \item{path_list}{The list of locations of chemical descriptors}
@@ -14,6 +14,9 @@ The default is \code{FALSE}.}
 
 \item{shorten}{Whether to message the shortened file name.
 The default is \code{TRUE}.}
+
+\item{use_filename}{Whether to use the file names to label the
+elements of the list. The default is \code{TRUE}.}
 }
 \value{
 A list of the files read from the paths
@@ -22,4 +25,9 @@ A list of the files read from the paths
 \code{read_desc_list} is a wrapper for \verb{[read_desc()]} and \code{lapply}.
 The function calls \verb{[read_desc_helper()]} for additional error
 handling. Acceptable files are RDS, CSV, and Excel files.
+}
+\details{
+Additionally, the list of the files read from the paths will
+be named with the filenames minus the file extensions. This
+can be controlled with \code{use_filename}
 }
