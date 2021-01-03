@@ -20,7 +20,7 @@ remove_col_na <- function(df, threshold = 0.2, quiet = T) {
     }
   )
   if (!quiet) {
-    message(sum(retain_col), " column(s) were removed.")
+    message(sum(!retain_col), " column(s) were removed.")
   }
   df[, retain_col]
 }
