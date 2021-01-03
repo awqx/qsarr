@@ -23,5 +23,6 @@ remove_col_outlier <- function(df, col, threshold = 3, quiet = T) {
       "There are ", length(outlier), " outliers ",
       "in the column ", col)
   }
+  if (!length(outlier)) return(df)
   df[-outlier, ]
 }
