@@ -16,7 +16,5 @@ retain_name <- function(x, f, ...) {
   param <- list(X = x, FUN = f, ...)
   result <- do.call(lapply, param)
   names(result) <- list_name
-  print(list_name)
-  print(names(result))
   result
 }
