@@ -4,7 +4,7 @@
 #' Outliers are defined as values that exceed the number of standard
 #' deviations passed to the function as a `threshold` value.
 #'
-#' The function`[sd()]` is used to obtain the population standard
+#' The function`[sd_pop()]` is used to obtain the population standard
 #' deviation. This function will remove NA and NaN values.
 #'
 #' @param x A numeric vector of values
@@ -16,6 +16,6 @@
 #' @export
 
 find_outlier <- function(x, threshold = 3) {
-  x_std <- (x - mean(x, na.rm = T)) / sd(x)
+  x_std <- (x - mean(x, na.rm = T)) / sd_pop(x)
   which(abs(x_std) > threshold)
 }

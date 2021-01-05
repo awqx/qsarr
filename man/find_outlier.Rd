@@ -23,6 +23,6 @@ Outliers are defined as values that exceed the number of standard
 deviations passed to the function as a \code{threshold} value.
 }
 \details{
-The function\verb{[sd()]} is used to obtain the population standard
+The function\verb{[sd_pop()]} is used to obtain the population standard
 deviation. This function will remove NA and NaN values.
 }

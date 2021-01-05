@@ -16,6 +16,7 @@
 #' @param use_filename Whether to use the file names to label the
 #'   elements of the list. The default is `TRUE`.
 #' @return A list of the files read from the paths
+#' @importFrom stringr str_remove_all
 #' @export
 
 read_desc_list <- function(path_list,
