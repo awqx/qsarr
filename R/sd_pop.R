@@ -1,6 +1,6 @@
 #' Obtain standard deviation
 #'
-#' `sd` retrieves the population standard deviation of a vector of observations.
+#' `sd_pop` retrieves the population standard deviation of a vector of observations.
 #' The function will automatically remove NA values.
 #'
 #' @param x Vector of numeric values
@@ -9,7 +9,7 @@
 #'   deviation of the input.
 #' @export
 
-sd <- function(x, quiet = T) {
+sd_pop <- function(x, quiet = T) {
   if (sum(is.na(x))) {
     if (!quiet) message("Removing NAs when finding std. deviation")
     x <- !x[is.na(x)]
