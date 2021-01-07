@@ -12,12 +12,12 @@
 sd_pop <- function(x, quiet = T) {
   if (sum(is.na(x))) {
     if (!quiet) message("Removing NAs when finding std. deviation")
-    x <- !x[is.na(x)]
+    x <- x[!is.na(x)]
   }
 
   if (sum(is.nan(x))) {
     if (!quiet) message("Removing NaNs when finding std. deviation")
-    x <- !x[is.nan(x)]
+    x <- x[!is.nan(x)]
   }
 
   sd <- sum((x - mean(x))^2)
