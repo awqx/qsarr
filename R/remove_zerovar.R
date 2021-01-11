@@ -1,10 +1,7 @@
-#' Center and scale data and remove predictors with near-zero variance
+#' Remove predictors with near-zero variance
 #'
-#' `center_scale_zero` preprocesses data by applying three common
-#' preprocessing treatments.
-#' The data is centered so that predictors have a mean of 0. The data is
-#' scaled so the standard deviation is 1. The standard deviation will be
-#' corrected using `[sd_pop()]`.
+#' `remove_zerovar` is a wrapper for `caret::nearZeroVar` and indexing the
+#' data frame to remove the resulting predictors.
 #'
 #' Because the data frame to be passed to the function will likely include
 #' columns that do not need to be transformed (like columns for identification)
@@ -23,26 +20,15 @@
 #'   with near-zero variance removed. Columns can be ignored and not be
 #'   preprocessed.
 #' @importFrom caret nearZeroVar
+#' @export
 
-center_scale_zero <- function(df, ignore_col = NA, quiet = T, ...) {
+remove_zerovar <- function(df, ignore_col = NA, quiet = T, ...) {
   if (!is.na(ignore_col[1])) {
     ignore_index <- which(names(df) %in% ignore_col)
     df_retain <- df[, ignore_index]
     df <- df[, -ignore_index]
   }
 
-  # Centering and scaling
-  df <- lapply(
-    df,
-    function(x) {
-      # Center by subtracting the mean
-      # Scale by dividing by standard deviation
-      (x - mean(x, na.rm = T)) / sd_pop(x)
-    }
-  ) %>%
-    data.frame()
-
-  # Remove variable with near-zero variance
   param <- list(x = df, ...)
   zero_var <- do.call(nearZeroVar, param)
   df <- df[, -zero_var]

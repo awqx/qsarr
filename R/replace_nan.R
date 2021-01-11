@@ -13,6 +13,7 @@ replace_nan <- function(df) {
     df,
     function(x) {
       x[which(is.nan(x))] <- NA
+      x[which(is.infinite(x))] <- NA
       x
     }
   ) %>%

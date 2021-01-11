@@ -57,7 +57,7 @@ predict.ad <- function(ad, df, ignore_more = NA, ...) {
   ignore_col <- unique(c(ad$ignore_col, ignore_more))
   if (!is.na(ignore_col[1])) {
     ignore_index <- which(names(df) %in% ignore_col)
-    df <- df[, -ignore_index]
+    if (length(ignore_index)) df <- df[, -ignore_index]
   }
 
   # Check for same length
@@ -93,9 +93,8 @@ predict.ad <- function(ad, df, ignore_more = NA, ...) {
     1:nrow(std_df),
     function(x) {
       x <- std_df[x, ] %>% as.numeric()
-      if (min(x) > 3) return(F)
-      if (max(x) < 3) return(T)
-
+      if (min(x, na.rm = T) > 3) F
+      if (max(x, na.rm = T) < 3) T
       s_new <- mean(x) + 1.28 * sd_pop(x)
       ifelse(s_new < 3, T, F)
     }

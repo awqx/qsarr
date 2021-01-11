@@ -23,7 +23,7 @@
 ad <- function(df, ignore_col = NA) {
   if (!is.na(ignore_col[1])) {
     ignore_index <- which(names(df) %in% ignore_col)
-    df <- df[, -ignore_index]
+    if (length(ignore_index)) df <- df[, -ignore_index]
   }
 
   if (sum(!sapply(df, is.numeric))) {
