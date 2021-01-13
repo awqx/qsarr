@@ -15,12 +15,12 @@ dwnld_mol(mol, path, file_format = "SDF")
 of possible formats can be found in the Chemical Identifier Resolver.}
 }
 \value{
-The function returns a data frame row corresponding to whether a
-file downloaded, received a warning, or received an error.
+The function returns a data frame row corresponding to whether a file
+downloaded, received a warning, or received an error.
 }
 \description{
-\code{dwnld_mol} queries the NCI Chemical Identifier Resolver for a structure
-file corresponding to the name given. The file is saved in the directory
-provided as the path. The Chemical Identifier Resolver can be found at
+\code{dwnld_mol} queries the NCI Chemical Identifier Resolver for a structure file
+corresponding to the name given. The file is saved in the directory provided
+as the path. The Chemical Identifier Resolver can be found at
 \url{https://cactus.nci.nih.gov/chemical/structure}.
 }

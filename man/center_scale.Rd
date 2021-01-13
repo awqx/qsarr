@@ -4,7 +4,7 @@
 \alias{center_scale}
 \title{Center and scale data and remove predictors with near-zero variance}
 \usage{
-center_scale(df, ignore_col = NA, quiet = T, return_ad = F, ad_obj = NA, ...)
+center_scale(df, ignore_col = NA, return_ad = F, ad_obj = NA, ...)
 }
 \arguments{
 \item{df}{The data frame to be processed.}
@@ -13,9 +13,6 @@ center_scale(df, ignore_col = NA, quiet = T, return_ad = F, ad_obj = NA, ...)
 character vector. This will likely constitute the response variable.
 The default is \code{ignore_col = NA}.
 These columns will be reappended to the data frame at the beginning.}
-
-\item{quiet}{Whether to suppress the message for how many predictors are
-removed in preprocessing. The default is \code{quiet = T}.}
 
 \item{return_ad}{Whether or not to return the applicability domain object.
 Set this to \code{return_ad = T} if this is training data and the resulting
@@ -40,6 +37,10 @@ These are labeled \code{"df"} and \code{"ad"}, respectively.
 The data is centered so that predictors have a mean of 0. The data is
 scaled so the standard deviation is 1. The standard deviation will be
 corrected using \verb{[sd_pop()]}.
+
+After the above cleaning steps, the mean of each descriptor should be 0.
+The NAs in the data frame will be replaced with 0, using the assumption
+that missing values can be estimated to be the expectation of the descriptor.
 
 This uses an \code{"ad"} S3 object constructed using \verb{[ad()]}.
 

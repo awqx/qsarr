@@ -9,10 +9,10 @@ remove_zerovar(df, ignore_col = NA, quiet = T, ...)
 \arguments{
 \item{df}{The data frame to be processed.}
 
-\item{ignore_col}{Columns that will not be preprocessed, given as a
-character vector. This will likely constitute the response variable.
-The default is \code{ignore_col = NA}.
-These columns will be reappended to the data frame at the beginning.}
+\item{ignore_col}{Columns that will not be preprocessed, given as a character
+vector. This will likely constitute the response variable. The default is
+\code{ignore_col = NA}. These columns will be reappended to the data frame at
+the beginning.}
 
 \item{quiet}{Whether to suppress the message for how many predictors are
 removed in preprocessing. The default is \code{quiet = T}.}
@@ -20,13 +20,12 @@ removed in preprocessing. The default is \code{quiet = T}.}
 \item{...}{Additional arguments to be passed to \code{caret::nearZeroVar}}
 }
 \value{
-A data frame with columns centered and scaled and with variables
-with near-zero variance removed. Columns can be ignored and not be
-preprocessed.
+A data frame with columns centered and scaled and with variables with
+near-zero variance removed. Columns can be ignored and not be preprocessed.
 }
 \description{
-\code{remove_zerovar} is a wrapper for \code{caret::nearZeroVar} and indexing the
-data frame to remove the resulting predictors.
+\code{remove_zerovar} is a wrapper for \code{caret::nearZeroVar} and indexing the data
+frame to remove the resulting predictors.
 }
 \details{
 Because the data frame to be passed to the function will likely include

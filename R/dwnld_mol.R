@@ -1,16 +1,16 @@
 #' Download molecule structure
 #'
-#' `dwnld_mol` queries the NCI Chemical Identifier Resolver for a structure
-#' file corresponding to the name given. The file is saved in the directory
-#' provided as the path. The Chemical Identifier Resolver can be found at
+#' `dwnld_mol` queries the NCI Chemical Identifier Resolver for a structure file
+#' corresponding to the name given. The file is saved in the directory provided
+#' as the path. The Chemical Identifier Resolver can be found at
 #' <https://cactus.nci.nih.gov/chemical/structure>.
 #'
 #' @param mol Name of molecule
 #' @param path Name of directory to save file
 #' @param file_format Type of file to download, default of "SDF". The full list
 #'   of possible formats can be found in the Chemical Identifier Resolver.
-#' @return The function returns a data frame row corresponding to whether a
-#'   file downloaded, received a warning, or received an error.
+#' @return The function returns a data frame row corresponding to whether a file
+#'   downloaded, received a warning, or received an error.
 #' @import httr
 #' @export
 

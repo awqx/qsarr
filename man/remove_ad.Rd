@@ -7,28 +7,26 @@
 remove_ad(df, ad_obj, quiet = T, ...)
 }
 \arguments{
-\item{df}{The data frame where molecules outside the applicability
-domain should be removed. This should be testing data only.}
+\item{df}{The data frame where molecules outside the applicability domain
+should be removed. This should be testing data only.}
 
-\item{ad_obj}{An \code{"ad"} class object built off of the training data
-for the model being examined.}
+\item{ad_obj}{An \code{"ad"} class object built off of the training data for the
+model being examined.}
 
-\item{quiet}{Whether to message how many observations were found
-to be outside the applicability domain.
-The default is \code{quiet = T}.}
+\item{quiet}{Whether to message how many observations were found to be
+outside the applicability domain. The default is \code{quiet = T}.}
 }
 \value{
-A data frame with observations within the appliability
-domain of the training data.
-}
-\description{
-\code{remove_ad} is a wrapper for \verb{[predict.ad()]} and indexing the
-data frame to retain values that are not X-outliers. It is similar
-to \verb{[remove_xoutlier()]} but is specified for testing data and not
+A data frame with observations within the appliability domain of the
 training data.
 }
+\description{
+\code{remove_ad} is a wrapper for \verb{[predict.ad()]} and indexing the data frame to
+retain values that are not X-outliers. It is similar to \verb{[remove_xoutlier()]}
+but is specified for testing data and not training data.
+}
 \details{
-A recommended optional argumet is \verb{ignore_more = } to specify a
-vector of column indices or column names (as characters) to skip
-when using \verb{[predict.ad()]} in the function.
+A recommended optional argumet is \verb{ignore_more = } to specify a vector of
+column indices or column names (as characters) to skip when using
+\verb{[predict.ad()]} in the function.
 }
