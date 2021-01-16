@@ -9,6 +9,7 @@
 #' @param nfold The number of folds to use in evaluation. Default is `10`.
 #' @param nrep The number of repetitions to use in evaluation. Default is `1`.
 #' @param ignore_col Columns to ignore during model-building. Default is `NA`.
+#' @import randomForest
 #' @return An object of S3 class `"tune"`.
 #' @export
 
@@ -34,11 +35,9 @@ tune.randomForest <- function(method,
     ...
   )
 
-  if (!is.na(ignore_col)) {
-    ignore_index <- which(names(df) %in% ignore_col)
-    if (length(ignore_index)) {
-      df <- df[,-ignore_index]
-    }
+  ignore_index <- which(names(df) %in% ignore_col)
+  if (length(ignore_index)) {
+    df <- df[,-ignore_index]
   }
 
   final_param <- append(
