@@ -39,8 +39,13 @@ eval_model <- function(df,
                        simplify = T,
                        ignore_col = NA,
                        ...) {
-  if (is.null(df[resp])) {
+  if (is.na(resp)) {
     message("Specify a column name to be used as a response variable")
+    return(0)
+  }
+
+  if (!resp %in% colnames(df)) {
+    message("Column name for response is not in the data frame")
     return(0)
   }
 
