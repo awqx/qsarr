@@ -30,6 +30,7 @@
 #' @importFrom caret defaultSummary createFolds
 #' @importFrom tidyr pivot_longer
 #' @importFrom tibble rownames_to_column
+#' @importFrom randomForest randomForest
 #' @export
 
 eval_model <- function(df,

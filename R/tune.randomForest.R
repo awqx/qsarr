@@ -9,7 +9,7 @@
 #' @param nfold The number of folds to use in evaluation. Default is `10`.
 #' @param nrep The number of repetitions to use in evaluation. Default is `1`.
 #' @param ignore_col Columns to ignore during model-building. Default is `NA`.
-#' @import randomForest
+#' @importFrom randomForest randomForest
 #' @return An object of S3 class `"tune"`.
 #' @export
 
