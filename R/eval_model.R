@@ -87,7 +87,7 @@ eval_model <- function(df,
         NA
       )
 
-      if (is.na(model)) {
+      if (is.na(model[1])) {
         message(
           "Model-building failed.", "\n",
           "See `?eval_model` for available options for methods."
