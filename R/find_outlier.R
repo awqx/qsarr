@@ -16,6 +16,6 @@
 #' @export
 
 find_outlier <- function(x, threshold = 3) {
-  x_std <- (x - mean(x, na.rm = T)) / sd_pop(x)
+  x_std <- (x - mean(x, na.rm = T)) / sd(x, na.rm = T)
   which(abs(x_std) > threshold)
 }

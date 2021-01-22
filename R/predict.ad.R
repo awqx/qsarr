@@ -90,7 +90,7 @@ predict.ad <- function(ad, df, msg = F, ...) {
       x <- std_df[x, ] %>% as.numeric()
       if (min(x, na.rm = T) > 3) F
       if (max(x, na.rm = T) < 3) T
-      s_new <- mean(x, na.rm = T) + 1.28 * sd_pop(x)
+      s_new <- mean(x, na.rm = T) + 1.28 * sd(x, na.rm = T)
       ifelse(s_new < 3, T, F)
     }
   )

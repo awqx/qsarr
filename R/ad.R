@@ -36,7 +36,7 @@ ad <- function(df, ignore_col = NA) {
 
   obj <- list(
     x_mean = sapply(df, mean, na.rm = T),
-    x_sd = sapply(df, sd_pop),
+    x_sd = sapply(df, sd, na.rm = T),
     ignore_col = ignore_col
   )
 

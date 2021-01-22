@@ -40,8 +40,7 @@ will be returned. Set \code{quiet = F} to be notified if columns are lost.
 }
 \details{
 The data is centered so that predictors have a mean of 0. The data is
-scaled so the standard deviation is 1. The standard deviation will be
-corrected using \verb{[sd_pop()]}.
+scaled so the standard deviation is 1.
 
 After the above cleaning steps, the mean of each descriptor should be 0.
 The NAs in the data frame will be replaced with 0, using the assumption

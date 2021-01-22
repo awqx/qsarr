@@ -40,7 +40,7 @@ eval_model_rep <- function(nrep = 10, ...) {
     group_by(summary_stat) %>%
     summarize(
       fold_avg = mean(value, na.rm = T),
-      fold_sd = sd_pop(value),
+      fold_sd = sd(value, na.rm = T),
       .groups = "drop"
     ) %>%
     data.frame()
@@ -56,7 +56,7 @@ eval_model_rep <- function(nrep = 10, ...) {
     group_by(summary_stat) %>%
     summarize(
       # Not includeing rep_avg = mean(x); it is identical to fold_avg
-      rep_sd = sd_pop(x),
+      rep_sd = sd(x, na.rm = T),
       .groups = "drop"
     ) %>%
     data.frame()
@@ -69,7 +69,7 @@ eval_model_rep <- function(nrep = 10, ...) {
     group_by(summary_stat, nrep) %>%
     summarize(
       avg = mean(value, na.rm = T),
-      sd = sd_pop(value),
+      sd = sd(value, na.rm = T),
       .groups = "drop"
     ) %>%
     data.frame()

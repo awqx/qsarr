@@ -20,8 +20,8 @@ the best performing parameters.
 \item \verb{$model}: the final model with the tuned parameters
 \item \verb{$param_tested}: a list of the parameters used in the tuning process
 \item \verb{$nfold_tested}: the number of folds in each iteration of tuning
-\item \code{nrep_tested}: the number of repetitions in each iteration of tuning
-\item \code{pred_name}: the predictors from the data set
+\item \verb{$nrep_tested}: the number of repetitions in each iteration of tuning
+\item \verb{$pred_name}: the predictors from the data set
 }
 }
 \description{
@@ -31,4 +31,7 @@ available are the same as \verb{[eval_model()]}.
 \details{
 Calling \code{print} on a \code{"tune"} object provides details on the model type and
 the model performance.
+
+Calling \code{predict} on a \code{"tune"} object runs prediction using the class of the
+model stored in the object.
 }

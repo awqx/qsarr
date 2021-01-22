@@ -113,7 +113,7 @@ eval_model <- function(df,
       group_by(summary_stat) %>%
       summarize(
         fold_avg = mean(value, na.rm = T),
-        fold_sd = sd_pop(value)
+        fold_sd = sd(value, na.rm = T)
       ) %>%
       data.frame()
   }
