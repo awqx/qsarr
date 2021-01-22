@@ -6,6 +6,9 @@
 #' Calling `print` on a `"tune"` object provides details on the model type and
 #' the model performance.
 #'
+#' Calling `predict` on a `"tune"` object runs prediction using the class of the
+#' model stored in the object.
+#'
 #' @param method The method to be used in model-building. See the description
 #'   for `[eval_model()]` for available methods.
 #' @param ... Additional arguments to be passed to model-building. This will
@@ -15,8 +18,8 @@
 #' * `$model`: the final model with the tuned parameters
 #' * `$param_tested`: a list of the parameters used in the tuning process
 #' * `$nfold_tested`: the number of folds in each iteration of tuning
-#' * `nrep_tested`: the number of repetitions in each iteration of tuning
-#' * `pred_name`: the predictors from the data set
+#' * `$nrep_tested`: the number of repetitions in each iteration of tuning
+#' * `$pred_name`: the predictors from the data set
 #' @export
 
 tune <- function(method, ...) {
@@ -33,23 +36,4 @@ tune <- function(method, ...) {
     "rf" = "randomForest"
   )
   UseMethod("tune", dummy)
-}
-
-print.tune <- function(tune_obj) {
-  cat(
-    "Model type: ", class(tune_obj$model), "\n\n",
-    "Tuned parameters: ", "\n",
-    sapply(
-      names(tune_obj$param),
-      function(x) {
-        paste0("\t", x, ": ", tune_obj$param[[x]], "\n")
-      }
-    ), "\n",
-    "Number of predictors: ", length(tune_obj$pred_name), "\n",
-    "Predictors (first 10): ",
-    tune_obj$pred_name[1:(min(10, length(tune_obj$pred_name)))],
-    "\n", "\n",
-    "Model performance: ", "\n"
-  )
-  print(tune_obj$result_summary)
 }

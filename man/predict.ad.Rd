@@ -11,9 +11,10 @@ predict(ad_obj, df, ignore_col = NA, ...)
 
 \item{df}{A data frame of chemical descriptors}
 
-\item{ignore_col}{Columns that will not be preprocessed, given as a character
-vector. This will likely constitute the response variable. The default is
-\code{ignore_col = NA}.}
+\item{msg}{Whether to return a message when there are more predictors in the
+data frame than in the applicability domain object. Typically, this will not
+be a problem as long as the relevant predictors are still present. The
+default is \code{msg = F}.}
 }
 \value{
 An integer vector of the row indices of X-outliers
@@ -52,8 +53,7 @@ The function only returns a vector of booleans. To remove the X-outliers in a
 data set and return the cleaned data frame, use the function
 \verb{[remove_xoutlier()]}.
 
-The data frame may have columns that are not chemical descriptors. To handles
-this, use the parameter \code{ignore_col} with a vector of the names of the
-columns to ignore (as characters) in the process. of building the \code{"ad"}
-object. Additional columns to ignore can be passed as \verb{ignore_more = }.
+The data frame may have columns that are not chemical descriptors. This will
+not hinder the ability to make predictions, though this behavior may not be
+expected. By setting \code{msg = T}, extra columns can be detected.
 }

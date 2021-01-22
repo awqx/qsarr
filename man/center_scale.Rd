@@ -4,7 +4,7 @@
 \alias{center_scale}
 \title{Center and scale data and remove predictors with near-zero variance}
 \usage{
-center_scale(df, ignore_col = NA, return_ad = F, ad_obj = NA, ...)
+center_scale(df, ignore_col = NA, return_ad = F, ad_obj = NA, quiet = T, ...)
 }
 \arguments{
 \item{df}{The data frame to be processed.}
@@ -18,6 +18,9 @@ These columns will be reappended to the data frame at the beginning.}
 Set this to \code{return_ad = T} if this is training data and the resulting
 applicability domain object could be useful for testing data.}
 
+\item{quiet}{Whether to return a message if there are columns in the original
+data frame that are dropped.}
+
 \item{ad}{An optional \code{"ad"} object to pass. Use this if you are centering
 and scaling test data. Default is \code{ad = NA} and a new object is created
 and discarded within the function (unless \code{return_ad = T}).}
@@ -29,6 +32,8 @@ Columns can be ignored and not be preprocessed.
 If \code{return_ad = T}, a list with the data frame with columns centered
 and scaled as well as the \code{"ad"} class object.
 These are labeled \code{"df"} and \code{"ad"}, respectively.
+Note that only the columns in \code{ignore_col} and named in the \code{ad_obj} provided
+will be returned. Set \code{quiet = F} to be notified if columns are lost.
 }
 \description{
 \code{center_scale} preprocesses data.

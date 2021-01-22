@@ -32,46 +32,48 @@
 #' data set and return the cleaned data frame, use the function
 #' `[remove_xoutlier()]`.
 #'
-#' The data frame may have columns that are not chemical descriptors. To handles
-#' this, use the parameter `ignore_col` with a vector of the names of the
-#' columns to ignore (as characters) in the process. of building the `"ad"`
-#' object. Additional columns to ignore can be passed as `ignore_more = `.
+#' The data frame may have columns that are not chemical descriptors. This will
+#' not hinder the ability to make predictions, though this behavior may not be
+#' expected. By setting `msg = T`, extra columns can be detected.
 #'
 #' @param ad An ad object
 #' @param df A data frame of chemical descriptors
-#' @param ignore_col Columns that will not be preprocessed, given as a character
-#'   vector. This will likely constitute the response variable. The default is
-#'   `ignore_col = NA`.
+#' @param msg Whether to return a message when there are more predictors in the
+#'   data frame than in the applicability domain object. Typically, this will not
+#'   be a problem as long as the relevant predictors are still present. The
+#'   default is `msg = F`.
 #' @usage predict(ad_obj, df, ignore_col = NA, ...)
 #' @return An integer vector of the row indices of X-outliers
 #' @export
 
-predict.ad <- function(ad, df, ignore_more = NA, ...) {
-  ignore_col <- unique(c(ad$ignore_col, ignore_more))
-  if (!is.na(ignore_col[1])) {
-    ignore_index <- which(names(df) %in% ignore_col)
+predict.ad <- function(ad, df, msg = F, ...) {
+  if (!is.na(ad$ignore_col[1])) {
+    ignore_index <- which(names(df) %in% ad$ignore_col)
     if (length(ignore_index)) df <- df[, -ignore_index]
   }
 
-  # Check for same length
-  if (ncol(df) != length(ad$x_mean)) {
-    message(
-      "Number of predictors does not match applicability domain", "\n",
-      "Consider ignoring columns with `ignore_more =`"
-    )
-    return()
+  if (msg) {
+    if (ncol(df) > length(ad$x_mean)) {
+      message(
+        "There are ", ncol(df) - length(ad$x_mean), " more predictors ",
+        "in the data frame compared to the applicability domain"
+      )
+    }
   }
 
-  # Check for matching names
-  if (sum(names(df) %in% names(ad$x_mean)) < ncol(df)) {
+  # Slightly different that previous error check
+  # If predictors in the ad object are not present in the data frame, this is a
+  # critical issue that prevents evaluation of the applicability domain
+  if (sum(names(ad$x_mean) %in% names(df)) < length(ad$x_mean)) {
     message(
-      "Names of predictors does not match applicability domain", "\n"
+      "Predictors in the applicability domain are missing from the data", "\n",
+      "Prediction cannot proceed; exiting with NA"
     )
-    return()
+    return(NA)
   }
 
   std_df <- lapply(
-    names(df),
+    names(ad$x_mean),
     function(x) {
       x_mean <- ad$x_mean[x]
       x_sd <- ad$x_sd[x]
@@ -88,7 +90,7 @@ predict.ad <- function(ad, df, ignore_more = NA, ...) {
       x <- std_df[x, ] %>% as.numeric()
       if (min(x, na.rm = T) > 3) F
       if (max(x, na.rm = T) < 3) T
-      s_new <- mean(x) + 1.28 * sd_pop(x)
+      s_new <- mean(x, na.rm = T) + 1.28 * sd_pop(x)
       ifelse(s_new < 3, T, F)
     }
   )
