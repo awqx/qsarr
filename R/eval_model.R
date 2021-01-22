@@ -11,6 +11,7 @@
 #' * `"svm_polynomial"`: SVM with polynomial kernel
 #' * `"svm_radial"`: SVM with radial basis function kernel
 #' * `"svm_sigmoid"`: SVM with sigmoid kernel
+#' * `"earth"`: MARS with package `earth`
 #'
 #' @param df The data frame to train the model on
 #' @param resp The name of the column to be used as a response variable.
@@ -104,6 +105,7 @@ eval_model <- function(df,
           param <- append(param, kernel = "radial")
           do.call(svm, param)
         },
+        "earth" = do.call(earth, param),
         NA
       )
 

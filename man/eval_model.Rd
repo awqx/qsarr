@@ -55,5 +55,6 @@ through the parameter \code{method}:
 \item \code{"svm_polynomial"}: SVM with polynomial kernel
 \item \code{"svm_radial"}: SVM with radial basis function kernel
 \item \code{"svm_sigmoid"}: SVM with sigmoid kernel
+\item \code{"earth"}: MARS with package \code{earth}
 }
 }

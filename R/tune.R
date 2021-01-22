@@ -34,7 +34,11 @@ tune <- function(method, ...) {
   class(dummy) <- switch(
     method,
     "rf" = "randomForest",
-    "svm_linear" = "svm_linear"
+    "svm_linear" = "svm_linear",
+    "svm_polynomial" = "svm_polynomial",
+    "svm_radial" = "svm_radial",
+    "earth" = "earth",
+    "mars" = "earth"
   )
   UseMethod("tune", dummy)
 }
