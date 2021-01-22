@@ -33,7 +33,8 @@ tune <- function(method, ...) {
   dummy <- 1
   class(dummy) <- switch(
     method,
-    "rf" = "randomForest"
+    "rf" = "randomForest",
+    "svm_linear" = "svm_linear"
   )
   UseMethod("tune", dummy)
 }

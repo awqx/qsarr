@@ -51,6 +51,9 @@ Currently, the function can evaluate the following model types, passed
 through the parameter \code{method}:
 \itemize{
 \item \code{"rf"}: Random Forest from the package \code{randomForest}
-\item \code{"linear_svm"}" SVM with linear kernel from the package \code{e1071}
+\item \code{"svm_linear"}: SVM with linear kernel from the package \code{e1071}
+\item \code{"svm_polynomial"}: SVM with polynomial kernel
+\item \code{"svm_radial"}: SVM with radial basis function kernel
+\item \code{"svm_sigmoid"}: SVM with sigmoid kernel
 }
 }

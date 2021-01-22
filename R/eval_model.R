@@ -7,7 +7,10 @@
 #' through the parameter `method`:
 #'
 #' * `"rf"`: Random Forest from the package `randomForest`
-#' * `"linear_svm"`" SVM with linear kernel from the package `e1071`
+#' * `"svm_linear"`: SVM with linear kernel from the package `e1071`
+#' * `"svm_polynomial"`: SVM with polynomial kernel
+#' * `"svm_radial"`: SVM with radial basis function kernel
+#' * `"svm_sigmoid"`: SVM with sigmoid kernel
 #'
 #' @param df The data frame to train the model on
 #' @param resp The name of the column to be used as a response variable.
@@ -31,6 +34,7 @@
 #' @importFrom tidyr pivot_longer
 #' @importFrom tibble rownames_to_column
 #' @importFrom randomForest randomForest
+#' @importFrom e1071 svm
 #' @export
 
 eval_model <- function(df,
@@ -84,6 +88,22 @@ eval_model <- function(df,
       model <- switch(
         method,
         "rf" = do.call(randomForest, param),
+        "svm_linear" = {
+          param <- append(param, kernel = "linear")
+          do.call(svm, param)
+        },
+        "svm_polynomial" = {
+          param <- append(param, kernel = "polynomial")
+          do.call(svm, param)
+        },
+        "svm_sigmoid" = {
+          param <- append(param, kernel = "sigmoid")
+          do.call(svm, param)
+        },
+        "svm_linear" = {
+          param <- append(param, kernel = "radial")
+          do.call(svm, param)
+        },
         NA
       )
 

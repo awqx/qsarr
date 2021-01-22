@@ -1,7 +1,9 @@
 #' Tune a random forest
 #'
-#' `tune.randomForest` tests the function `[randomForest::randomForest()]` with
-#' provided parameters.
+#' Passing `method = "rf"` tunes the function `[randomForest::randomForest()]`.
+#'
+#' Possible parameters to tune `"rf"` are `mtry`, `replace`, `sampsize`,
+#' `nodesize`, and `maxnodes`.
 #'
 #' @param method The model-building method. Should be `"rf"` at this point.
 #' @param df The data frame to train on
@@ -10,7 +12,16 @@
 #' @param nrep The number of repetitions to use in evaluation. Default is `1`.
 #' @param ignore_col Columns to ignore during model-building. Default is `NA`.
 #' @importFrom randomForest randomForest
-#' @return An object of S3 class `"tune"`.
+#' @usage tune(method = "rf", df, resp, nfold = 10, nrep = 1, ...)
+#' @examples # Using tune and "rf" (randomForest) as the method
+#' tune(
+#'   method = "rf", df = your_data, resp = "y",
+#'   nfold = 10, nrep = 10,
+#'   mtry = c(2, 4, 8, 14),
+#'   replace = c(T, F),
+#'   sampsize = c(10, 20, 30)
+#' )
+#' @rdname tune
 #' @export
 
 tune.randomForest <- function(method,
