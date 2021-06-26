@@ -15,6 +15,9 @@ Imports:
     caret,
     stringr,
     e1071, 
+    pacman,
+    randomForest, 
+    earth,
     XML
 RoxygenNote: 7.1.1
 Roxygen: list(markdown = TRUE)

@@ -90,7 +90,8 @@ eval_model <- function(df,
         method,
         "rf" = do.call(randomForest, param),
         "svm_linear" = {
-          param <- append(param, kernel = "linear")
+          param <- append(param, "linear")
+          names(param)[length(param)] <- "kernel"
           do.call(svm, param)
         },
         "svm_polynomial" = {
