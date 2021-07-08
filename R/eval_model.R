@@ -96,14 +96,17 @@ eval_model <- function(df,
         },
         "svm_polynomial" = {
           param <- append(param, kernel = "polynomial")
+          names(param)[length(param)] <- "kernel"
           do.call(svm, param)
         },
         "svm_sigmoid" = {
           param <- append(param, kernel = "sigmoid")
+          names(param)[length(param)] <- "kernel"
           do.call(svm, param)
         },
-        "svm_linear" = {
+        "svm_radial" = {
           param <- append(param, kernel = "radial")
+          names(param)[length(param)] <- "kernel"
           do.call(svm, param)
         },
         "earth" = do.call(earth, param),
