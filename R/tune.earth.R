@@ -27,12 +27,12 @@
 #' @export
 
 tune.earth <- function(method,
-                            df,
-                            resp,
-                            nfold = 10,
-                            nrep = 1,
-                            ignore_col = NA,
-                            ...) {
+                       df,
+                       resp,
+                       nfold = 10,
+                       nrep = 1,
+                       ignore_col = NA,
+                       ...) {
   if (missing(resp) || missing(df)) {
     message("Specify a response variable and data frame")
     return()

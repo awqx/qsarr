@@ -8,5 +8,11 @@
 #' @export
 
 predict.tune <- function(tune_obj, ...) {
+  # if (length(class(tune_obj$model)) > 1) {
+  #   class(tune_obj$model) <-
+  #     class(tune_obj$model)[length(class(tune_obj$model))]
+  # }
+  # best_model <- tune_obj$model
+  # UseMethod("predict", best_model)
   predict(tune_obj$model, ...)
 }
