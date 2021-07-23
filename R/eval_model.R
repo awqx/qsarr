@@ -95,17 +95,17 @@ eval_model <- function(df,
           do.call(svm, param)
         },
         "svm_polynomial" = {
-          param <- append(param, kernel = "polynomial")
+          param <- append(param, "polynomial")
           names(param)[length(param)] <- "kernel"
           do.call(svm, param)
         },
         "svm_sigmoid" = {
-          param <- append(param, kernel = "sigmoid")
+          param <- append(param, "sigmoid")
           names(param)[length(param)] <- "kernel"
           do.call(svm, param)
         },
         "svm_radial" = {
-          param <- append(param, kernel = "radial")
+          param <- append(param, "radial")
           names(param)[length(param)] <- "kernel"
           do.call(svm, param)
         },
