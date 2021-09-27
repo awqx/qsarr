@@ -40,6 +40,8 @@ tune <- function(method, ...) {
     "svm_radial" = "svm_radial",
     "earth" = "earth",
     "mars" = "earth",
+    "glm" = "glm",
+    "glm" = "glmnet",
     "unavailable_model"
   )
   UseMethod("tune", dummy)
