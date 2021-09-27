@@ -36,9 +36,11 @@ tune <- function(method, ...) {
     "rf" = "randomForest",
     "svm_linear" = "svm_linear",
     "svm_polynomial" = "svm_polynomial",
+    "svm_sigmoid" = "svm_sigmoid",
     "svm_radial" = "svm_radial",
     "earth" = "earth",
-    "mars" = "earth"
+    "mars" = "earth",
+    "unavailable_model"
   )
   UseMethod("tune", dummy)
 }
